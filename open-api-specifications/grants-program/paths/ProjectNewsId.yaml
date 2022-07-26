@@ -1,0 +1,60 @@
+put:
+  summary: Update a project news item
+  operationId: updateProjectNewsItem
+  tags:
+    - "project-owner"
+  parameters:
+    - name: "id"
+      in: "path"
+      description: ID of project to look up
+      required: true
+      type: "string"
+    - name: "news_id"
+      in: "path"
+      description: ID of a news item
+      required: true
+      type: "integer"
+    - name: "news_item"
+      in: "body"
+      description: A new project update object
+      required: true
+      schema:
+        $ref: "../schemas/NewsItem.yaml"
+  security:
+    - Bearer: []
+  responses:
+    200:
+      description: Success
+    403:
+      $ref: "../responses/Forbidden.yaml"
+    404:
+      $ref: "../responses/NotFound.yaml"
+    500:
+      $ref: "../responses/InternalError.yaml"
+
+delete:
+  summary: Delete a single project news item
+  tags:
+    - "project-owner"
+  parameters:
+    - name: "id"
+      in: "path"
+      description: ID of project to look up
+      required: true
+      type: "string"
+    - name: "news_id"
+      in: "path"
+      description: ID of a news item
+      required: true
+      type: "integer"
+  security:
+    - Bearer: []
+  responses:
+    200:
+      description: Success
+    403:
+      $ref: "../responses/Forbidden.yaml"
+    404:
+      $ref: "../responses/NotFound.yaml"
+    500:
+      $ref: "../responses/InternalError.yaml"

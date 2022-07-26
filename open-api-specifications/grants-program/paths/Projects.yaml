@@ -1,0 +1,68 @@
+get:
+  summary: "Get information on projects"
+  parameters:
+    - in: query
+      name: "name"
+      type: "string"
+    - $ref: "../parameters/Limit.yaml"
+    - $ref: "../parameters/Offset.yaml"
+  responses:
+    200:
+      description: "successful operation"
+      schema:
+        $ref: "../schemas/ProjectArray.yaml"
+    500:
+      $ref: "../responses/InternalError.yaml"
+post:
+  summary: "Create a new project"
+  tags:
+    - "auth"
+  parameters:
+    - in: "body"
+      name: "body"
+      description: "project to be posted"
+      required: true
+      schema:
+        type: "object"
+        required:
+          - "name"
+          - "algorand_wallet"
+          - "homepage"
+          - "github"
+          - "shortDescription"
+          - "country"
+          - "icon"
+          - "content"
+          - "screenshot"
+        properties:
+          name:
+            type: "string"
+          algorand_wallet:
+            type: "string"
+          homepage:
+            type: "string"
+          github:
+            type: "string"
+          shortDescription:
+            type: "string"
+          country:
+            type: "string"
+          icon:
+            type: "string"
+          content:
+            type: "string"
+          screenshot:
+            type: "string"
+  security:
+    - Bearer: []
+  responses:
+    200:
+      description: "successful operation"
+      schema:
+        $ref: "../schemas/Project.yaml"
+    401:
+      decription: "Unauthorized"
+    403:
+      $ref: "../responses/Forbidden.yaml"
+    500:
+      $ref: "../responses/InternalError.yaml"

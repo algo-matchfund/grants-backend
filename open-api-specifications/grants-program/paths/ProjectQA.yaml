@@ -1,0 +1,47 @@
+get:
+  summary: "Get a list of questions and answers for a project"
+  operationId: getProjectQA
+  parameters:
+    - name: "id"
+      in: "path"
+      description: ID of project to look up
+      required: true
+      type: "string"
+  responses:
+    200:
+      description: Success
+      schema:
+        $ref: "../schemas/ProjectQA.yaml"
+    404:
+      $ref: "../responses/NotFound.yaml"
+    500:
+      $ref: "../responses/InternalError.yaml"
+
+post:
+  summary: "Post a question about a project"
+  operationId: postProjectQuestion
+  tags:
+    - "auth"
+  parameters:
+    - name: "id"
+      in: "path"
+      description: ID of project to look up
+      required: true
+      type: "string"
+    - name: "question"
+      in: "body"
+      required: true
+      $ref: "../schemas/ProjectQuestion.yaml"
+  security:
+    - Bearer: []
+  responses:
+    200:
+      description: Success
+      schema:
+        $ref: "../schemas/ProjectQuestion.yaml"
+    403:
+      $ref: "../responses/Forbidden.yaml"
+    404:
+      $ref: "../responses/NotFound.yaml"
+    500:
+      $ref: "../responses/InternalError.yaml"

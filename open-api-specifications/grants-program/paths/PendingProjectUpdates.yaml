@@ -1,0 +1,16 @@
+get:
+  summary: Get list of pending changes to all projects' information created by the user
+  operationId: getAllPendingProjectChanges
+  tags:
+    - project-owner
+  security:
+    - Bearer: []
+  responses:
+    200:
+      description: List of pending changes to all projects. Only changed fields and name are present
+      schema:
+        $ref: "../schemas/ProjectArray.yaml"
+    401:
+      description: Unauthorized
+    500:
+      $ref: "../responses/InternalError.yaml"

@@ -1,0 +1,14 @@
+get:
+  summary: "Get a list of project contributors"
+  operationId: getProjectContributors
+  parameters:
+    - name: "id"
+      in: "path"
+      description: ID of project to look up
+      required: true
+      type: "string"
+  responses:
+    200:
+      description: Success
+      schema:
+        $ref: "../schemas/ProjectContributorsArray.yaml"

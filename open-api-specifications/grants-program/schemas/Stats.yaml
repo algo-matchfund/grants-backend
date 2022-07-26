@@ -1,0 +1,24 @@
+type: object
+required:
+  - "user_count"
+  - "project_count"
+  - "donation_count"
+  - "donation_amount"
+  - "match_amount"
+properties:
+  user_count:
+    type: integer
+  project_count:
+    type: integer
+  donation_count:
+    type: integer
+  donation_amount:
+    type: integer
+  match_amount:
+    type: integer
+  match_start_date:
+    type: "string"
+    format: "date-time"
+  match_end_date:
+    type: "string"
+    format: "date-time"

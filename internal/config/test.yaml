@@ -1,0 +1,19 @@
+server:
+  host: 0.0.0.0
+  port: 8090
+  allowed_origins:
+    - "a"
+    - "b"
+authentication:
+  publickey: "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7EumKDm1oLH6RoIw8zjbc1cVv7RkzC8UpgdFGQmefifYv89NtLAW356eX0uNFYVwheITSYTnpNSjRps6nqEPLwrSwn4V8upUHUbCvNplXLZ2fhSryCWcYtsX+PMOtjB94BAD3MDS3qWaOVVtSSsooF/0YZAcgLDK7BAkN485+nT/Cj8lV+tthNkY+YczOV4G4k9W07sVC2AzEEs3zFa2t31qwlfhtIaEZ3Pow/t2/dafQYd0+ZHMK8EtbOb6hesZACNrR9a3EjB9uXU9yhPxg/av1TLemf6B1tXFrMl0iB4uibdOpdPoYvFtPJ/JNnKqu9udrrk4+MiyaGtS1eKlGwIDAQAB\n-----END PUBLIC KEY-----"
+database:
+  host: localhost
+  port: 5432
+  user: analytics
+  password: secret
+  name: analytics
+payment_providers:
+  algorand:
+    address: https://algoindexer.testnet.algoexplorerapi.io
+    token:
+    watch_queue: 10

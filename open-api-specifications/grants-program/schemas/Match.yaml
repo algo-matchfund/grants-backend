@@ -1,0 +1,22 @@
+type: "object"
+properties:
+  id:
+    type: "string"
+    readOnly: true
+  project_id:
+    type: "string"
+  fund:
+    type: "integer"
+    x-omitempty: "false"
+  contributors:
+    type: "integer"
+    x-omitempty: "false"
+  match:
+    type: "number"
+    x-omitempty: "false"
+  factor:
+    type: "number"
+    x-omitempty: "false"
+  percent:
+    type: "number"
+    x-omitempty: "false"

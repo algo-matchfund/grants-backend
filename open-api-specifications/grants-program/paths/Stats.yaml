@@ -1,0 +1,9 @@
+get:
+  summary: "Get basic statistics about the analytics system"
+  responses:
+    200:
+      description: "successful operation"
+      schema:
+        $ref: "../schemas/Stats.yaml"
+    500:
+      $ref: "../responses/InternalError.yaml"

@@ -1,0 +1,43 @@
+get:
+  summary: "Get authenticated user's notifications"
+  tags:
+    - "auth"
+  security:
+    - Bearer: []
+  responses:
+    200:
+      description: "successful operation"
+      schema:
+        $ref: "../schemas/NotificationArray.yaml"
+    403:
+      $ref: "../responses/Forbidden.yaml"
+    500:
+      $ref: "../responses/InternalError.yaml"
+
+put:
+  summary: "Mark as read all of authenticated user's notifications"
+  tags:
+    - "auth"
+  security:
+    - Bearer: []
+  responses:
+    200:
+      description: "successful operation"
+    403:
+      $ref: "../responses/Forbidden.yaml"
+    500:
+      $ref: "../responses/InternalError.yaml"
+
+delete:
+  summary: "Delete all of authenticated user's notifications"
+  tags:
+    - "auth"
+  security:
+    - Bearer: []
+  responses:
+    200:
+      description: "successful operation"
+    403:
+      $ref: "../responses/Forbidden.yaml"
+    500:
+      $ref: "../responses/InternalError.yaml"

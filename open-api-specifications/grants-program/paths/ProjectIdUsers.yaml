@@ -1,0 +1,19 @@
+get:
+  operationId: getUsersWithPermissions
+  summary: "Get users with permissions on a given project"
+  parameters:
+    - $ref: "../parameters/UserID.yaml"
+    - name: "projectWrite"
+      in: "path"
+      type: "boolean"
+  responses:
+    200:
+      description: "successful operation"
+      schema:
+        $ref: "../schemas/UserArray.yaml"
+    403:
+      $ref: "../responses/Forbidden.yaml"
+    404:
+      $ref: "../responses/NotFound.yaml"
+    500:
+      $ref: "../responses/InternalError.yaml"

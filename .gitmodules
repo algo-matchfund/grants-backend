@@ -1,0 +1,3 @@
+[submodule "grants-smart-contract"]
+	path = grants-smart-contract
+	url = http://github.com/algo-matchfund/grants-smart-contract

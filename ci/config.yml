@@ -1,0 +1,41 @@
+server:
+  host: 0.0.0.0
+  port: 8090
+  ssl: false
+  allowed_origins:
+    - "*"
+  # cert: certs/MyCertificate.crt
+  # key: certs/MyKey.key
+authentication:
+  publickey: "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlRvN8urM1inwgmBeeqOE/zjiiOs3R93Gg+EraFsOJabUEk2sTrZnbi9CXRUpl8UD1Y0BvhoOmdn2EZ9E2PLEm5tORW1GmZkLt/aXAX5rCdXPzlyohP3UKHXbKGKpH5YFsp7WKzlpDwYQDbWwyQJ0QXABRarECwph2oj0bzTiNNZqLfiPvBPYva8y5e3sCsYabx5U69YZFf/YLN79WaAPRTBrz2OoOUG/zmFVsIhkE65hcpFsT8iEL+sHfl3GVS42/oggfxBa8idyqwsHtbNPhJIoLzDol4MY8MY4VkyuKqQpsWcvPsgoNJow6cHlSyEfLvS9YbRbK5BmRKo+dDfBdwIDAQAB\n-----END PUBLIC KEY-----"
+  host: http://keycloak
+  port: 8080
+  realm: grants
+  client: backend
+  secret: 3212137b-838b-48d3-aa05-04a2ffe020c4
+database:
+  host: grants-database
+  port: 5432
+  user: grants
+  password: secret
+  name: grants
+payment_providers:
+  algorand:
+    indexer:
+      address: https://algoindexer.testnet.algoexplorerapi.io
+      token:
+    node:
+      address: https://node.testnet.algoexplorerapi.io
+      token:
+    watch_queue: 10
+    block_confirmation: 10
+smart_contract:
+  host: https://node.testnet.algoexplorerapi.io
+  admin:
+    address: WZEVC4UZTY4CC2JHH3HDGNC6PRHDO43KBL5SZUVPKPOV5XBRW6LCWMD2YU
+    passphrase: "cricket vessel another board thought pyramid harvest destroy layer sound extra ecology tomato decade act uncover setup item peanut boost hill capital involve about habit"
+  node:
+    address: https://node.testnet.algoexplorerapi.io
+    token: MKQ9ix7y6u6VvXByf4u7U2jMpdsEm6vf4vEtgNCK
+  watch_queue: 10
+  block_confirmation: 10

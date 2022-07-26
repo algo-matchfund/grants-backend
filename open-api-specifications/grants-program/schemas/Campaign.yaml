@@ -1,0 +1,30 @@
+type: "object"
+description: "Describes a funding campaign"
+required:
+  - "name"
+  - "start_time"
+properties:
+  id:
+    type: "integer"
+    readOnly: true
+  name:
+    type: "string"
+  start_time:
+    type: "string"
+    format: "date-time"
+  end_time:
+    type: "string"
+    format: "date-time"
+  description:
+    type: "string"
+  goal:
+    type: "integer"
+  contributed:
+    type: "integer"
+    readOnly: true
+  matched:
+    type: "integer"
+    readOnly: true
+  contributors:
+    type: "integer"
+    readOnly: true

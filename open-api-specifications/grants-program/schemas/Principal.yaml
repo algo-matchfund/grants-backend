@@ -1,0 +1,25 @@
+type: object
+properties:
+  realm_access:
+    type: object
+    properties:
+      roles:
+        type: array
+        items:
+          type: string
+  id:
+    type: string
+  email_verified:
+    type: boolean
+  name:
+    type: string
+  given_name:
+    type: string
+  family_name:
+    type: string
+  email:
+    type: string
+  preferred_username:
+    type: string
+  vat_number:
+    type: string

@@ -1,0 +1,31 @@
+type: object
+required:
+  - id
+  - fee
+  - sender
+  - amount
+  - receiver
+  - signature
+  - status
+properties:
+  id:
+    type: string
+  fee:
+    type: integer
+    format: int64
+  sender:
+    type: string
+  amount:
+    type: number
+    format: int64
+  receiver:
+    type: string
+  confirmed-round:
+    type: integer
+    readOnly: true
+    nullable: true
+  signature:
+    type: string
+  status:
+    type: string
+    enum: [pending, confirmed, error]

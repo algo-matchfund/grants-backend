@@ -1,0 +1,49 @@
+get:
+  summary: Get a list of news for the project
+  operationId: getProjectNews
+  parameters:
+    - name: "id"
+      in: "path"
+      description: ID of project to look up
+      required: true
+      type: "string"
+  responses:
+    200:
+      description: Success
+      schema:
+        $ref: "../schemas/NewsItemsArray.yaml"
+    404:
+      $ref: "../responses/NotFound.yaml"
+    500:
+      $ref: "../responses/InternalError.yaml"
+
+post:
+  summary: Post a project update as a project's author
+  operationId: postProjectNews
+  tags:
+    - "project-owner"
+  security:
+    - Bearer: []
+  parameters:
+    - name: "id"
+      in: "path"
+      description: ID of project to look up
+      required: true
+      type: "string"
+    - name: "news_item"
+      in: "body"
+      description: A new project update object
+      required: true
+      schema:
+        $ref: "../schemas/NewsItem.yaml"
+  responses:
+    200:
+      description: Success
+      schema:
+        $ref: "../schemas/NewsItem.yaml"
+    403:
+      $ref: "../responses/Forbidden.yaml"
+    404:
+      $ref: "../responses/NotFound.yaml"
+    500:
+      $ref: "../responses/InternalError.yaml"

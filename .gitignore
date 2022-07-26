@@ -1,0 +1,8 @@
+**.swp
+build
+db/test_data.sql
+gen/
+vendor/
+
+!gen/restapi/configure_grants_program.go
+main

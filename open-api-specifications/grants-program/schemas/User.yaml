@@ -1,0 +1,31 @@
+type: "object"
+required:
+  - email
+properties:
+  id:
+    type: "string"
+    readOnly: true
+  first_name:
+    type: "string"
+  last_name:
+    type: "string"
+  email:
+    type: "string"
+    format: "email"
+  email_verified:
+    type: "boolean"
+    readOnly: true
+  github_credential:
+    type: "string"
+  github_verified:
+    type: "boolean"
+    readOnly: true
+  avatar:
+    type: "string"
+    format: "byte"
+    description: "Base64-encoded user avatar"
+  roles:
+    readOnly: true
+    type: "array"
+    items:
+      type: "string"

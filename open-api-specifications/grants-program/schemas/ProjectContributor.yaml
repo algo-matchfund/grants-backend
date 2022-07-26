@@ -1,0 +1,12 @@
+type: "object"
+required:
+  - "contributor_id"
+properties:
+  id:
+    type: "integer"
+    readOnly: true
+  contributor_id:
+    type: "string"
+  amount:
+    type: "integer"
+    readOnly: true

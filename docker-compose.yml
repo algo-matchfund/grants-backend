@@ -1,0 +1,105 @@
+version: "3.7"
+services:
+  grants-database:
+    container_name: grants-database
+    image: postgres:12-alpine
+    environment:
+      - POSTGRES_PASSWORD=secret
+    volumes:
+      - grants-database:/var/lib/postgresql/data
+      - ./ci/create_databases.sql:/docker-entrypoint-initdb.d/create_databases.sql
+    ports:
+      - 5432:5432
+
+  grants-backend:
+    container_name: grants-backend
+    depends_on:
+      - grants-database
+    image: registry.matchfund.app/grants-backend:main
+    ports:
+      - 8090:8090
+    volumes:
+      - ./ci/config.yml:/home/config.yml
+      - ./approval.teal:/home/approval.teal
+      - ./clear.teal:/home/clear.teal
+
+  api-docs:
+    container_name: api-docs
+    image: swaggerapi/swagger-ui
+    ports:
+      - 8091:8080
+    volumes:
+      - ./open-api-specifications/grants-program/grants-program.yaml:/api.yaml
+      - ./open-api-specifications/grants-program/schemas:/schemas
+      - ./open-api-specifications/grants-program/paths:/paths
+      - ./open-api-specifications/grants-program/responses:/responses
+      - ./open-api-specifications/grants-program/parameters:/parameters
+    environment:
+      - SWAGGER_JSON=/api.yaml
+
+  keycloak:
+    container_name: keycloak
+    image: quay.io/keycloak/keycloak:12.0.4
+    depends_on:
+      - grants-database
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+      - KEYCLOAK_IMPORT=/tmp/realm.json
+      - DB_VENDOR=POSTGRES
+      - DB_ADDR=grants-database
+      - DB_DATABASE=keycloak
+      - DB_USER=keycloak
+      - DB_SCHEMA=public
+      - DB_PASSWORD=secret
+    ports:
+      - 8080:8080
+    volumes:
+      - ./ci/realm.json:/tmp/realm.json
+      - ./keycloak-themes/src/main/resources/theme/grants:/opt/jboss/keycloak/themes/grants/
+
+  grants-frontend:
+    container_name: grants-frontend
+    environment:
+      - DEPLOYMENT_URL=https://grants-frontend
+      - BACKEND_URL=https://grants-backend:444
+      - KEYCLOAK_URL=https://keycloak:445
+      - ALGOD_TOKEN=
+    image: registry.matchfund.app/grants-frontend:main
+    depends_on:
+      - grants-backend
+      - keycloak
+
+  data-gen:
+    container_name: data-gen
+    build:
+      context: .
+      dockerfile: db/Dockerfile
+    environment:
+      PGPASSWORD: secret
+    volumes:
+      - ./db:/db
+    depends_on:
+      - grants-database
+      - grants-backend
+
+  # SSL offloading
+  nginx:
+    command: /bin/bash -c "envsubst '$${NGINX_HOST}' < /tmp/nginx/nginx.conf > /etc/nginx/conf.d/nginx.conf && nginx -g 'daemon off;'"
+    container_name: nginx
+    depends_on:
+      - grants-frontend
+      - grants-backend
+      - keycloak
+    image: nginx:latest
+    init: true
+    ports:
+      - "443:443"
+      - "444:444"
+      - "445:445"
+    volumes:
+      - "./ci/nginx.conf:/tmp/nginx/nginx.conf:Z"
+      - "./ci/certs/:/etc/nginx/certs/mycerts/:z"
+
+volumes:
+  grants-database:

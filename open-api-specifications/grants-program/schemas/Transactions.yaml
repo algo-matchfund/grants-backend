@@ -1,0 +1,9 @@
+type: object
+required:
+  - "optin"
+  - "set_donation"
+properties:
+  optin:
+    type: string
+  set_donation:
+    type: string

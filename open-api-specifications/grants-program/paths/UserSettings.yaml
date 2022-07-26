@@ -1,0 +1,37 @@
+get:
+  summary: Get authenticated user's settings
+  tags:
+    - "auth"
+  security:
+    - Bearer: []
+  responses:
+    200:
+      description: Success
+      schema:
+        $ref: "../schemas/UserSettings.yaml"
+    403:
+      $ref: "../responses/Forbidden.yaml"
+    500:
+      $ref: "../responses/InternalError.yaml"
+
+put:
+  summary: Update authenticated user's settings
+  tags:
+    - "auth"
+  parameters:
+    - name: "settings"
+      in: "body"
+      required: true
+      schema:
+        $ref: "../schemas/UserSettings.yaml"
+  security:
+    - Bearer: []
+  responses:
+    200:
+      description: Success
+      schema:
+        $ref: "../schemas/UserSettings.yaml"
+    403:
+      $ref: "../responses/Forbidden.yaml"
+    500:
+      $ref: "../responses/InternalError.yaml"

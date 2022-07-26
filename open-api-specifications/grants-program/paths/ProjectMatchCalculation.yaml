@@ -1,0 +1,26 @@
+get:
+  summary: Get match calculated with the provided amount of fund
+  operationId: getProjectMatchCalculation
+  parameters:
+    - name: "id"
+      in: "path"
+      description: "Id of project to look up"
+      required: true
+      type: "string"
+    - name: "amount"
+      in: "query"
+      type: "integer"
+      description: "Amount to fund the project with"
+      required: true
+      minimum: 0
+  responses:
+    200:
+      description: Success
+      schema:
+        type: "number"
+    400:
+      $ref: "../responses/BadRequest.yaml"
+    404:
+      $ref: "../responses/NotFound.yaml"
+    500:
+      $ref: "../responses/InternalError.yaml"

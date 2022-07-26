@@ -1,0 +1,43 @@
+delete:
+  summary: "Delete authenticated user's notification"
+  tags:
+    - "auth"
+  security:
+    - Bearer: []
+  parameters:
+    - name: "notification_id"
+      in: "path"
+      description: "ID of the notification to delete"
+      required: true
+      type: "integer"
+  responses:
+    200:
+      description: Success
+    403:
+      $ref: "../responses/Forbidden.yaml"
+    404:
+      $ref: "../responses/NotFound.yaml"
+    500:
+      $ref: "../responses/InternalError.yaml"
+
+put:
+  summary: "Mark as read authenticated user's notification"
+  tags:
+    - "auth"
+  security:
+    - Bearer: []
+  parameters:
+    - name: "notification_id"
+      in: "path"
+      description: "ID of the notification to mark as read"
+      required: true
+      type: "integer"
+  responses:
+    200:
+      description: Success
+    403:
+      $ref: "../responses/Forbidden.yaml"
+    404:
+      $ref: "../responses/NotFound.yaml"
+    500:
+      $ref: "../responses/InternalError.yaml"

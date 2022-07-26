@@ -1,0 +1,4 @@
+in: "query"
+name: "from"
+type: "string"
+format: "date-time"

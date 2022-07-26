@@ -1,0 +1,15 @@
+type: object
+properties:
+  project_id:
+    type: string
+    readOnly: true
+  tx_type:
+    type: string
+    readOnly: true
+    enum: [algorand]
+  transactions:
+    type: array
+    readOnly: true
+    items:
+      oneOf:
+        - $ref: "./AlgorandTransaction.yaml"

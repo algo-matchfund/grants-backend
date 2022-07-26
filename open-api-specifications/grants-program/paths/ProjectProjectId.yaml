@@ -1,0 +1,17 @@
+get:
+  summary: "Get information on a single project"
+  parameters:
+    - name: "id"
+      in: "path"
+      description: "Id of project to look up"
+      required: true
+      type: "string"
+  responses:
+    200:
+      description: "successful operation"
+      schema:
+        $ref: "../schemas/Project.yaml"
+    404:
+      $ref: "../responses/NotFound.yaml"
+    500:
+      $ref: "../responses/InternalError.yaml"

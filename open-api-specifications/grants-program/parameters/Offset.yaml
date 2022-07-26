@@ -1,0 +1,4 @@
+in: "query"
+name: "offset"
+type: "integer"
+minimum: 0

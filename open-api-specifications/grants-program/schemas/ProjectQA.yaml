@@ -1,0 +1,8 @@
+type: "array"
+items:
+  type: "object"
+  properties:
+    question:
+      $ref: "./ProjectQuestion.yaml"
+    answer:
+      $ref: "./ProjectAnswer.yaml"

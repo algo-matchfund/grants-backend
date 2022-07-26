@@ -1,0 +1,20 @@
+type: "object"
+required:
+  - "title"
+  - "content"
+properties:
+  id:
+    type: "integer"
+    readOnly: true
+  project:
+    description: A reference to the project where this news item is posted
+    type: "string"
+    readOnly: true
+  post_time:
+    type: "string"
+    format: "date-time"
+    readOnly: true
+  title:
+    type: "string"
+  content:
+    type: "string"

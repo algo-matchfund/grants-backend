@@ -1,0 +1,109 @@
+swagger: "2.0"
+info:
+  title: "Grants Program API"
+  version: "0.0.2"
+
+produces:
+  - "application/json"
+consumes:
+  - "application/json"
+schemes:
+- "https"
+- "http"
+
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+
+tags:
+  - name: auth
+    description: API available for any authenticated user
+  - name: project-owner
+    description: API available only for authenticated project owners
+  - name: moderator
+    description: System moderation API (user must have moderator role)
+
+paths:
+  /projects:
+    $ref: "./paths/Projects.yaml"
+  /projects/pending:
+    $ref: "./paths/PendingProjectUpdates.yaml"
+  /projects/categories:
+    $ref: "./paths/ProjectCategories.yaml"
+  /projects/{id}:
+    $ref: "./paths/ProjectProjectId.yaml"
+  /projects/{id}/pending:
+    $ref: "./paths/ProjectIdPendingUpdates.yaml"
+  /projects/{id}/calculate:
+    $ref: "./paths/ProjectMatchCalculation.yaml"
+  /project/{id}/fund:
+    $ref: "./paths/ProjectProjectIdFund.yaml"
+  /project/{id}/fund/tx:
+    $ref: "./paths/ProjectProjectIdFundTx.yaml"
+  /projects/{id}/news:
+    $ref: "./paths/ProjectNews.yaml"
+  /projects/{id}/news/{news_id}:
+    $ref: "./paths/ProjectNewsId.yaml"
+  /projects/{id}/qa:
+    $ref: "./paths/ProjectQA.yaml"
+  /projects/{id}/qa/{question_id}:
+    $ref: "./paths/ProjectQuestions.yaml"
+  /projects/{id}/qa/{question_id}/{answer_id}:
+    $ref: "./paths/ProjectAnswers.yaml"
+  /projects/{id}/contributors:
+    $ref: "./paths/ProjectContributors.yaml"
+  /stats:
+    $ref: "./paths/Stats.yaml"
+  /transactions/{id}:
+    $ref: "./paths/SmartContractTransactions.yaml"
+  /users:
+    $ref: "./paths/User.yaml"
+  /users/settings:
+    $ref: "./paths/UserSettings.yaml"
+  /users/notifications:
+    $ref: "./paths/UserNotifications.yaml"
+  /users/notifications/{notification_id}:
+    $ref: "./paths/UserNotificationId.yaml"
+  /users/{userID}:
+    $ref: "./paths/UserUserId.yaml"
+
+  /moderate/projects:
+    $ref: "./paths/Moderation/Projects.yaml"
+  /moderate/projects/{moderation_id}:
+    $ref: "./paths/Moderation/ProjectId.yaml"
+  #/moderate/notifications:
+  #  $ref: "./paths/Moderation/Notifications.yaml"
+  #/moderate/notifications/{notification_id}:
+  #  $ref: "./paths/Moderation/NotificationId.yaml"
+
+definitions:
+  Campaign:
+    $ref: "./schemas/Campaign.yaml"
+  Match:
+    $ref: "./schemas/Match.yaml"
+  MatchingRound:
+    $ref: "./schemas/MatchingRound.yaml"
+  NewsItem:
+    $ref: "./schemas/NewsItem.yaml"
+  ProjectQuestion:
+    $ref: "./schemas/ProjectQuestion.yaml"
+  ProjectAnswer:
+    $ref: "./schemas/ProjectAnswer.yaml"
+  ProjectContributor:
+    $ref: "./schemas/ProjectContributor.yaml"
+  Socials:
+    $ref: "./schemas/Socials.yaml"
+  Project:
+    $ref: "./schemas/Project.yaml"
+  CompanyFilter:
+    $ref: "./schemas/ProjectFilter.yaml"
+  Notification:
+    $ref: "./schemas/Notification.yaml"
+  Principal:
+    $ref: "./schemas/Principal.yaml"
+  Stats:
+    $ref: "./schemas/Stats.yaml"
+  User:
+    $ref: "./schemas/User.yaml"

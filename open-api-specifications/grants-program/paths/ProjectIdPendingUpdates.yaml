@@ -1,0 +1,50 @@
+get:
+  summary: Get pending changes for a project by project ID
+  operationId: getPendingProjectById
+  tags:
+    - project-owner
+  security:
+    - Bearer: []
+  parameters:
+    - name: id
+      in: path
+      description: Project ID
+      required: true
+      type: string
+  responses:
+    200:
+      description: Returns changed fields and name
+      schema:
+        $ref: "../schemas/Project.yaml"
+    401:
+      description: Unauthorized
+    403:
+      description: Forbidden (user is not project owner)
+    404:
+      $ref: "../responses/NotFound.yaml"
+    500:
+      $ref: "../responses/InternalError.yaml"
+
+delete:
+  summary: Cancel pending changes to a project by project ID
+  tags:
+    - project-owner
+  security:
+    - Bearer: []
+  parameters:
+    - name: id
+      in: path
+      description: Project ID
+      required: true
+      type: string
+  responses:
+    200:
+      description: OK
+    401:
+      description: Unauthorized
+    403:
+      description: Forbidden (user is not project owner)
+    404:
+      description: No pending project changes
+    500:
+      $ref: "../responses/InternalError.yaml"

@@ -1,0 +1,20 @@
+type: object
+required:
+  - date
+  - after
+properties:
+  moderationId:
+    type: integer
+    format: int64
+    readOnly: true
+  date:
+    type: string
+    format: date-time
+    description: Date and time of the change/project creation
+  before:
+    $ref: "../Project.yaml"
+    readOnly: true
+    description: Project definition before the change. Can be empty if it's a new project
+  after:
+    $ref: "../Project.yaml"
+    readOnly: true

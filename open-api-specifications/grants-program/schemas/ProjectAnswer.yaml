@@ -1,0 +1,14 @@
+type: "object"
+properties:
+  id:
+    type: "integer"
+    readOnly: true
+  question_id:
+    type: "integer"
+    readOnly: true
+  answer_time:
+    type: "string"
+    format: "date-time"
+    readOnly: true
+  content:
+    type: "string"

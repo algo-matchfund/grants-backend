@@ -1,0 +1,9 @@
+type: "object"
+properties:
+  ids:
+    type: "array"
+    items:
+      type: "string"
+  name:
+    type: "string"
+    x-nullable: true

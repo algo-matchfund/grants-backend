@@ -1,0 +1,53 @@
+type: "object"
+required:
+  - "name"
+  - "algorand_wallet"
+  - "appId"
+properties:
+  id:
+    type: "string"
+    readOnly: true
+  name:
+    type: "string"
+  algorand_wallet:
+    type: "string"
+  image:
+    type: "string"
+  icon:
+    type: "string"
+  background:
+    type: "string"
+  description:
+    type: "string"
+  content:
+    type: "string"
+  appId:
+    type: "integer"
+  socials:
+    $ref: "./Socials.yaml"
+  created_at:
+    type: "string"
+    format: "date-time"
+    readOnly: true
+  updated_at:
+    type: "string"
+    format: "date-time"
+    readOnly: true
+  campaigns:
+    type: "array"
+    items:
+      $ref: "../schemas/Campaign.yaml"
+  contributions:
+    type: "array"
+    items:
+      $ref: "../schemas/ProjectContributor.yaml"
+  match:
+    type: "number"
+    readOnly: true
+    x-omitempty: "false"
+  fund_amount:
+    type: "integer"
+    x-omitempty: "false"
+  donors:
+    type: "integer"
+    x-omitempty: "false"

@@ -1,0 +1,77 @@
+get:
+  summary: "List user's funding transactions towards the specific project"
+  tags:
+    - "auth"
+  parameters:
+    - name: "id"
+      in: "path"
+      type: "string"
+      description: "Id of funded project"
+      required: true
+    - name: "pending"
+      in: "query"
+      type: "boolean"
+      description: "Include pending funding transactions"
+      default: false
+    - name: "type"
+      in: "query"
+      type: "string"
+      description: "Type of transaction submitted"
+      oneOf:
+        - "algorand"
+  security:
+    - Bearer: []
+  responses:
+    200:
+      schema:
+        $ref: "../schemas/FundingTransactionsArray.yaml"
+    401:
+      decription: "Unauthorized"
+    403:
+      $ref: "../responses/Forbidden.yaml"
+    404:
+      $ref: "../responses/NotFound.yaml"
+    500:
+      $ref: "../responses/InternalError.yaml"
+
+post:
+  summary: "Fund a single project"
+  tags:
+    - "auth"
+  parameters:
+    - name: "id"
+      in: "path"
+      type: "string"
+      description: "Id of project to fund"
+      required: true
+    - name: "type"
+      in: "query"
+      type: "string"
+      description: "Type of transaction submitted"
+      oneOf:
+        - "algorand"
+      required: true
+    - name: "txid"
+      in: "body"
+      schema:
+        type: "string"
+        minLength: 52
+        maxLength: 52
+      description: "Funding transaction ID"
+      required: true
+  security:
+    - Bearer: []
+  responses:
+    200:
+      description: "successful operation"
+    400:
+      $ref: "../responses/BadRequest.yaml"
+    401:
+      decription: "Unauthorized"
+    403:
+      $ref: "../responses/Forbidden.yaml"
+    404:
+      description: Project or funding transaction not found
+      $ref: "../responses/NotFound.yaml"
+    500:
+      $ref: "../responses/InternalError.yaml"

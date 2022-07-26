@@ -1,0 +1,17 @@
+type: "object"
+description: "A question about a project"
+properties:
+  id:
+    type: "integer"
+    readOnly: true
+  user:
+    type: "string"
+    readOnly: true
+  ask_time:
+    type: "string"
+    format: "date-time"
+    readOnly: true
+  title:
+    type: "string"
+  content:
+    type: "string"

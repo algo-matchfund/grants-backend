@@ -1,0 +1,22 @@
+post:
+  summary: "Authenticate a single user"
+  parameters:
+    - name: "credential_type"
+      in: "formData"
+      description: "Type of credential to authenticate the user"
+      required: true
+      type: "string"
+    - name: "credentials"
+      in: "formData"
+      description: "Credentials to authenticate the user"
+      required: true
+      type: "string"
+  responses:
+    200:
+      description: "successful operation"
+    403:
+      $ref: "../responses/Forbidden.yaml"
+    404:
+      $ref: "../responses/NotFound.yaml"
+    500:
+      $ref: "../responses/InternalError.yaml"

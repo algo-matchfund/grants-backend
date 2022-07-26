@@ -1,0 +1,70 @@
+put:
+  summary: Update an answer to a question
+  operationId: updateAnswer
+  tags:
+    - "project-owner"
+  parameters:
+    - name: "id"
+      in: "path"
+      description: ID of project to look up
+      required: true
+      type: "string"
+    - name: "question_id"
+      in: "path"
+      description: ID of an answered question
+      required: true
+      type: "integer"
+    - name: "answer_id"
+      in: "path"
+      description: ID of an answer to delete
+      required: true
+      type: "integer"
+    - name: "answer"
+      in: "body"
+      required: true
+      schema:
+        $ref: "../schemas/ProjectAnswer.yaml"
+  security:
+    - Bearer: []
+  responses:
+    200:
+      description: Success
+    403:
+      $ref: "../responses/Forbidden.yaml"
+    404:
+      $ref: "../responses/NotFound.yaml"
+    500:
+      $ref: "../responses/InternalError.yaml"
+
+delete:
+  summary: Delete an answer to a question
+  operationId: deleteAnswer
+  tags:
+    - "project-owner"
+  parameters:
+    - name: "id"
+      in: "path"
+      description: ID of project to look up
+      required: true
+      type: "string"
+    - name: "question_id"
+      in: "path"
+      description: ID of an answered question
+      required: true
+      type: "integer"
+    - name: "answer_id"
+      in: "path"
+      description: ID of an answer to delete
+      required: true
+      type: "integer"
+  security:
+    - Bearer: []
+  responses:
+    200:
+      description: Success
+    403:
+      $ref: "../responses/Forbidden.yaml"
+    404:
+      $ref: "../responses/NotFound.yaml"
+    500:
+      $ref: "../responses/InternalError.yaml"

@@ -1,0 +1,17 @@
+type: "object"
+properties:
+  id:
+    type: "string"
+    readOnly: true
+  created_at:
+    type: "string"
+    format: "date-time"
+    readOnly: true
+  start_date:
+    type: "string"
+    format: "date-time"
+  end_date:
+    type: "string"
+    format: "date-time"
+  match_amount:
+    type: "integer"

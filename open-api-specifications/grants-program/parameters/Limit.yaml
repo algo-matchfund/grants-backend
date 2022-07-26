@@ -1,0 +1,4 @@
+in: "query"
+name: "limit"
+type: "integer"
+minimum: 0

@@ -1,0 +1,14 @@
+get:
+  summary: Get a list of available project categories
+  operationId: getProjectCategories
+  responses:
+    200:
+      description: Success
+      schema:
+        type: "array"
+        items:
+          type: "string"
+    404:
+      $ref: "../responses/NotFound.yaml"
+    500:
+      $ref: "../responses/InternalError.yaml"

@@ -1,0 +1,27 @@
+type: "object"
+required:
+  - "email"
+  - "password_hash"
+properties:
+  id:
+    type: "string"
+    readOnly: true
+  email:
+    type: "string"
+  email_verified:
+    type: "boolean"
+    default: false
+    readOnly: true
+  password_hash:
+    type: "string"
+  first_name:
+    type: "string"
+  last_name:
+    type: "string"
+  prefer_email:
+    type: "boolean"
+    default: true
+  avatar:
+    type: "string"
+  socials:
+    $ref: "../schemas/Socials.yaml"
