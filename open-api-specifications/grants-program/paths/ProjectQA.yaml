@@ -31,7 +31,8 @@ post:
     - name: "question"
       in: "body"
       required: true
-      $ref: "../schemas/ProjectQuestion.yaml"
+      schema:
+        $ref: "../schemas/ProjectQuestion.yaml"
   security:
     - Bearer: []
   responses:

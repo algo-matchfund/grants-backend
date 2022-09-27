@@ -8,10 +8,6 @@ post:
       type: "string"
       description: "Id of project to fund"
       required: true
-    - name: "currency"
-      in: "path"
-      type: "string"
-      description: "Currency to fund the company with"
     - name: "amount"
       in: "body"
       schema:
