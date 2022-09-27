@@ -47,6 +47,12 @@ The API itself is reachable at https://grants-backend:444
 
 You may have to accept certs for all three of the URLs above.
 
+## Keycloak Key Configuration
+Keycloak tokens are verified by checking if they are unexpired and if they were signed by the keycloak server. The public key of the keycloak server must be added to the configuration file in PEM format.
+
+The public key for the keycloak server can be obtained by visiting `http://localhost:8080/auth/realms/grants`.
+
+It must then be placed in `ci/config.yml` in the following format: `"-----BEGIN PUBLIC KEY-----\n<public key>\n-----END PUBLIC KEY-----"`.
 
 ## Updating smart contract
 `approval.teal` and `clear.teal` in the root directory are the smart contract programs. To update them:
